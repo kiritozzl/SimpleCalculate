@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         float fir = Float.valueOf(first);
         float sec = Float.valueOf(second);
+        String special = "";
 
         if (sigh.equals("+")){
             result = fir + sec;
@@ -181,10 +182,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = fir - sec;
         }else if (sigh.equals("X")){
             result = fir * sec;
-        }else if (sigh.equals("÷") && sec != 0){
-            result = fir / sec;
+        }else if (sigh.equals("÷")){
+            if (sec == 0){
+                special = "分母不能为零！";
+            }else {
+                result = fir / sec;
+            }
         }
-        tv_out.setText(result + "");
+        tv_out.setText(result + special);
     }
 
     private void input(String msg){
